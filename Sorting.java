@@ -64,9 +64,56 @@ public class Sorting {
     }
 
 
+    // Merge Sort - > O(nlogn)
+
+    public static void mergeSort(int []arr,int si, int ei){
+        int mid = si+(ei-si)/2;
+        // base case
+        if(si >= ei){
+            return;
+        }
+        mergeSort(arr,si,mid-1);
+        mergeSort(arr,mid+1,ei);
+        merge(arr,mid,si,ei);
+    }
+
+    // merge function to merge the sorted array
+    public static void merge(int []arr , int mid , int si , int ei ){
+        //  0  based indexing
+        // temp array size  -> ei-si+1
+        int[] temp = new int[ei-si+1];
+        int i = si; // iterator for left
+        int j = mid+1; // iterator for right
+        int k = 0; // iterator for temporary array
+
+        while(i<=mid && j<=ei){
+            if(arr[i] < arr[j]){
+                temp[k] = arr[i];
+                i++;
+                k++;
+            }
+            else{
+               temp[k] = arr[j];
+               j++;
+               k++;
+            }
+        }
+        // if there are  some leftover elements after loop in either left or right part of the array
+        while(i<=mid){
+            temp[k++] = arr[i++];
+        }
+        while(j<=ei){
+            temp[k++] = arr[j++];
+        }
+        // copy back the elements from the temp array to arr
+        for(k=0;k<temp.length;k++){
+            arr[si+k] = temp[k];
+        }
+    }
+
     public static void main(String[]args){
         int [] arr = {1,2,3,4,5};
-        inserstionSort(arr);
+        mergeSort(arr,0,4);
         printarray(arr);
     }
 
