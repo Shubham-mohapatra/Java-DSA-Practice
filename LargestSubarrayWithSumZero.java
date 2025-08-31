@@ -16,6 +16,7 @@ public class LargestSubarrayWithSumZero {
         int sum=0;
         int len=0;
 
+        subarr.put(0, -1);
 
 
         // loop till the end of the array using j
