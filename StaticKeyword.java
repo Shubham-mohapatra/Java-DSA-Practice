@@ -22,6 +22,9 @@ public class StaticKeyword {
         Student s1 = new Student();
         s1.schoolname = "APS";
 
+        Student s2 = new Student();
+        System.out.println(s2.schoolname);
+
 
     }
 }
